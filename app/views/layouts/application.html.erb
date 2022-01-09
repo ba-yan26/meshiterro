@@ -16,6 +16,9 @@
       <!-- user_signed_in?はdevise側で用意しているヘルパーメソッド -->
       <!-- deviseの機能を使ってログインしているか、していないかを判断し表示する内容を変更する -->
         <li>
+          <%= link_to '投稿フォーム', new_post_image_path %>
+        </li>
+        <li>
           <%= link_to "ログアウト",destroy_user_session_path, method: :delete %>
         </li>
       <% else %>
@@ -30,4 +33,3 @@
     <%= yield %>
   </body>
 </html>
-
