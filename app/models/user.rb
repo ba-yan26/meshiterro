@@ -14,4 +14,14 @@ class User < ApplicationRecord
   has_many :post_images, dependent: :destroy
   # Userモデルはpost_imageモデルをN個持っている（has_many :post_images）
   # 1:Nの1側が削除された時、N側を全て削除する（dependent: :destroy）
+  has_one_attached :profile_image
+  # profile_imageという名前でActivestorageでプロフィール画像を保存できるようにする
+  
+  def get_profile_image
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/sammple-author1.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.png', content_type: 'image/jpeg')
+    end
+    profile_image.variant(resize: size).processed
+  end
 end
