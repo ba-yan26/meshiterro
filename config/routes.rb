@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get '/homes/about' => 'homes#about', as: 'about'
   resources :post_images, only: [:new, :create, :index, :show, :destroy]
-  resources :users, only: [:show, :edit]
+  resources :users, only: [:show, :edit, :update]
   # resources :post_images(コントローラの同じ名前のアクション)と記述すると
   # new show indec edit create destroy update のルーティングを自動生成してくれる
   # おんょぷションを使用することで、生成するルーティングを限定することができる
