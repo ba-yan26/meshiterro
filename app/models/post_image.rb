@@ -1,6 +1,7 @@
 class PostImage < ApplicationRecord
   has_one_attached :image
   belongs_to :user
+  has_many :post_comments, dependent: :destroy
   # PostImageモデルでuser_idに関連付けされていてUserモデルを参照できる
   # belongs_toは１：NのN側なので関連したUserモデルを参照できる
   
