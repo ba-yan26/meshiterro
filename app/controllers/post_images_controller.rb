@@ -8,8 +8,11 @@ class PostImagesController < ApplicationController
     @post_image.user_id = current_user.id
     # user_idはユーザをIDで特定するために使用するカラム
     # current_user.idはログイン中のユーザーの情報を取得できる便利な記述（deviseをインストールをすることで使えるようになる）
-    @post_image.save
-    redirect_to post_images_path
+    if @post_image.save
+      redirect_to post_images_path
+    else
+      render :new
+    end
   end
 
   def index
