@@ -16,7 +16,10 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.all
+    # @post_images = PostImage.all
+    @post_images = PostImage.page(params[:page])
+    # PostImage.allではテーブル内の全データが取得されていた
+    # pageメソッドを使うことで１ページ分を決められた数だけ新しい順に取得できるようになる
   end
 
   def show
